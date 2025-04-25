@@ -1,101 +1,143 @@
-# Currency Pairs Portfolio Optimization
+Forex Portfolio Optimization
+This repository contains a Python implementation of a forex portfolio optimization strategy using Modern Portfolio Theory (MPT) and advanced risk metrics. The model selects optimal currency pairs based on statistical properties and constructs efficient portfolios through Monte Carlo simulation.
 
-This project focuses on optimizing a portfolio of currency pairs using historical data. The optimization criteria include minimizing variance, maximizing the Sharpe ratio, maximizing the Sortino ratio, and minimizing negative Sharpe ratios. The project also involves backtesting the optimal portfolios to evaluate their performance.
+Overview
+The optimization process:
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Data Extraction](#data-extraction)
-- [Statistical Analysis and EDA](#statistical-analysis-and-eda)
-- [Portfolio Optimization](#portfolio-optimization)
-- [Backtesting](#backtesting)
-- [Results](#results)
-- [Conclusion](#conclusion)
-- [Usage](#usage)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+Analyzes 10 major currency pairs from 2020-2025
 
-## Introduction
+Filters pairs based on skewness and kurtosis thresholds
 
-This project demonstrates the application of Modern Portfolio Theory (MPT) to optimize a portfolio of currency pairs. The optimization process considers multiple financial metrics to find the best asset allocation. The results are backtested to evaluate the historical performance of the optimized portfolios.
+Generates 10,000 random portfolios to identify the efficient frontier
 
-## Data Extraction
+Identifies optimal portfolios based on minimum variance, maximum Sharpe ratio, and maximum Sortino ratio
 
-Historical data for ten currency pairs is extracted from Yahoo Finance. The selected pairs are:
-- EURUSD=X
-- GBPUSD=X
-- AUDUSD=X
-- NZDUSD=X
-- USDCAD=X
-- USDCHF=X
-- USDJPY=X
-- EURGBP=X
-- EURJPY=X
-- GBPJPY=X
+Backtests the optimal portfolio to evaluate performance
 
-## Statistical Analysis and EDA
+Results
+Selected Currency Pairs
+The model selected 4 currency pairs with favorable statistical properties:
 
-Perform descriptive statistical analysis and exploratory data analysis (EDA) on the extracted data. The key metrics include mean returns, standard deviations, skewness, and kurtosis. This helps in selecting the most promising pairs for portfolio optimization.
+EURJPY
 
-## Portfolio Optimization
+EURUSD
 
-Simulate 10,000 random portfolios and calculate:
-- Expected annualized return
-- Annualized volatility
-- Sharpe ratio (annual risk-free rate: 4.5%)
-- Sortino ratio (annual target return: 4.5%)
+GBPJPY
 
-Identify the following optimal portfolios:
-1. Minimum Variance Portfolio
-2. Maximum Sharpe Ratio Portfolio
-3. Maximum Sortino Ratio Portfolio
-4. Minimum Negative Sharpe Ratio Portfolio
+NZDUSD
 
-## Backtesting
+Optimal Portfolio Weights (Maximum Sortino Ratio)
+Currency Pair	Weight
+EURJPY	61.80%
+EURUSD	0.22%
+GBPJPY	36.65%
+NZDUSD	1.33%
+Portfolio Performance Metrics
+Metric	Value
+Annualized Return	5.45%
+Annualized Volatility	8.69%
+Sharpe Ratio	0.1092
+Maximum Drawdown	-10.86%
+Final Value ($1 initial)	$1.32
+Portfolio Characteristics
+Three optimal portfolios were identified:
 
-Backtest the portfolio with the maximum Sortino ratio to evaluate its historical performance. Key metrics include:
-- Annualized Return: 1.05%
-- Annualized Volatility: 5.76%
-- Final Value: 1.0370
+Minimum Variance Portfolio
 
-## Results
+Return: 2.38%
 
-- **Maximum Sortino Ratio Portfolio Weights:**
-  - AUDUSD=X: 4.40%
-  - EURJPY=X: 17.29%
-  - EURUSD=X: 20.16%
-  - GBPJPY=X: 24.88%
-  - NZDUSD=X: 27.66%
-  - USDCHF=X: 5.60%
+Volatility: 6.58%
 
-- **Backtest Metrics:**
-  - Annualized Return: 1.05%
-  - Annualized Volatility: 5.76%
-  - Final Value: 1.0370
+Sharpe Ratio: -0.0203
 
-## Conclusion
+Sortino Ratio: -0.0279
 
-The project successfully demonstrated the application of MPT to currency pairs, identifying stable and moderately profitable investment strategies. Future work could extend the analysis to more currency pairs, different risk-free rates, or other asset classes.
+Maximum Sharpe Ratio Portfolio
 
-## Usage
+Return: 5.45%
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/currency-pairs-portfolio-optimization.git
-    cd currency-pairs-portfolio-optimization
-    ```
-2. Install the required dependencies.
-3. Run the Python scripts to perform data extraction, statistical analysis, portfolio optimization, and backtesting.
+Volatility: 8.70%
 
-## Dependencies
+Sharpe Ratio: 0.0069
 
-- numpy
-- pandas
-- matplotlib
-- yfinance
+Sortino Ratio: 0.0096
 
-Install the required packages using:
-```bash
-pip install numpy pandas matplotlib yfinance
-Contributions are welcome! Please fork the repository and submit pull requests for any improvements or bug fixes.
-This project is licensed under the MIT License.
+Maximum Sortino Ratio Portfolio
+
+Return: 5.45%
+
+Volatility: 8.70%
+
+Sharpe Ratio: 0.0069
+
+Sortino Ratio: 0.0096
+
+Note: The Maximum Sharpe and Maximum Sortino portfolios converged to the same solution in this case.
+
+Implementation Details
+Data Source: Yahoo Finance API
+
+Time Period: January 2020 - April 2025
+
+Risk-Free Rate: 4.5% (annualized)
+
+Selection Criteria:
+
+Absolute skewness < 0.5
+
+Absolute kurtosis < 3.5
+
+Optimization Method: Monte Carlo simulation with 10,000 random portfolios
+
+Visualizations
+The code generates several visualizations:
+
+Efficient frontier with highlighted optimal portfolios
+
+Cumulative returns of the optimal portfolio
+
+Portfolio drawdowns
+
+Monthly returns distribution
+
+Correlation matrix of selected currency pairs
+
+Requirements
+Python 3.7+
+
+NumPy
+
+Pandas
+
+Matplotlib
+
+Seaborn
+
+yfinance
+
+SciPy
+
+Usage
+python
+# Clone the repository
+git clone https://github.com/yourusername/forex-portfolio-optimization.git
+cd forex-portfolio-optimization
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run the optimization
+python forex_optimization.py
+Limitations and Considerations
+The model does not account for transaction costs or spreads
+
+Past performance is not indicative of future results
+
+Currency markets are influenced by numerous factors not captured in this model
+
+The backtest period includes both bullish and bearish market conditions
+
+The optimization assumes normal distribution of returns, which may not hold in extreme market conditions
+
+License
+MIT License
