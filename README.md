@@ -102,18 +102,8 @@ Monthly returns distribution
 
 Correlation matrix of selected currency pairs
 
-Requirements
-Python 3.7+
 
-NumPy
-Pandas
-Matplotlib
-Seaborn
-yfinance
-SciPy
 
-Usage
-python
 # Clone the repository
 git clone https://github.com/yourusername/forex-portfolio-optimization.git
 cd forex-portfolio-optimization
