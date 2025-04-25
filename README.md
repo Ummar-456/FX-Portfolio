@@ -106,15 +106,10 @@ Requirements
 Python 3.7+
 
 NumPy
-
 Pandas
-
 Matplotlib
-
 Seaborn
-
 yfinance
-
 SciPy
 
 Usage
